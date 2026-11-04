@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Netuno Suprimentos — Náutica, Pesca e Aventura</title>
+<meta name="description" content="Loja de suprimentos náuticos, pesca e camping. Entrega para todo o Brasil.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#16335B; --navy-900:#0E2341; --orange:#EE8E2B; --orange-600:#d97d18;
+    --ink:#15202B; --muted:#5b6b7b; --bg:#F5F7FA; --line:#e6ebf1; --white:#fff;
+    --sale:#C8102E; --green:#0E9F6E;
+    --radius:14px; --shadow:0 6px 24px rgba(16,35,65,.08); --shadow-lg:0 14px 40px rgba(16,35,65,.14);
+    --maxw:1240px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:Inter,system-ui,sans-serif;color:var(--ink);background:var(--white);line-height:1.5}
+  h1,h2,h3{font-family:Archivo,sans-serif;margin:0;line-height:1.1;letter-spacing:-.01em}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-family:Archivo;
+    padding:14px 26px;border-radius:10px;border:0;cursor:pointer;transition:.18s;font-size:15px}
+  .btn-orange{background:var(--orange);color:#fff}
+  .btn-orange:hover{background:var(--orange-600);transform:translateY(-1px)}
+  .btn-navy{background:var(--navy);color:#fff}
+  .btn-navy:hover{background:var(--navy-900)}
+  .btn-ghost{background:transparent;color:var(--navy);border:2px solid var(--navy)}
+  .btn-ghost:hover{background:var(--navy);color:#fff}
+
+  /* ===== Marquee bar ===== */
+  .marquee{background:var(--navy);color:#fff;overflow:hidden;white-space:nowrap;font-size:14px;font-weight:600}
+  .marquee-track{display:inline-flex;gap:60px;padding:10px 0;animation:scroll 22s linear infinite}
+  .marquee:hover .marquee-track{animation-play-state:paused}
+  .marquee span{display:inline-flex;align-items:center;gap:10px}
+  .marquee b{color:var(--orange)}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* ===== Header ===== */
+  header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:12px 0}
+  .logo img{height:52px;width:auto}
+  .menu{display:flex;gap:30px;font-weight:600;font-size:15px}
+  .menu a{padding:6px 0;position:relative;color:var(--navy)}
+  .menu a::after{content:"";position:absolute;left:0;bottom:-2px;height:2px;width:0;background:var(--orange);transition:.2s}
+  .menu a:hover::after{width:100%}
+  .icons{display:flex;gap:18px;align-items:center;color:var(--navy)}
+  .icons svg{width:24px;height:24px}
+  .icons .cart{position:relative}
+  .icons .cart b{position:absolute;top:-8px;right:-10px;background:var(--orange);color:#fff;font-size:11px;
+    font-weight:800;border-radius:999px;min-width:18px;height:18px;display:grid;place-items:center;padding:0 4px}
+  .burger{display:none;background:none;border:0;color:var(--navy);cursor:pointer}
+
+  /* ===== Hero ===== */
+  .hero{position:relative;min-height:560px;display:grid;align-items:center;color:#fff;overflow:hidden}
+  .hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,35,65,.86),rgba(14,35,65,.45))}
+  .hero-inner{position:relative;z-index:2;max-width:620px}
+  .hero .kicker{color:var(--orange);font-weight:800;font-family:Archivo;letter-spacing:.12em;text-transform:uppercase;font-size:13px}
+  .hero h1{font-size:clamp(34px,5vw,60px);font-weight:900;margin:14px 0 16px}
+  .hero p{font-size:18px;color:#dbe6f2;margin:0 0 28px;max-width:500px}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+
+  /* ===== Trust strip ===== */
+  .trust{background:var(--bg);border-bottom:1px solid var(--line)}
+  .trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:26px 0}
+  .trust-item{display:flex;gap:14px;align-items:center;justify-content:center;text-align:left}
+  .trust-item .ic{width:44px;height:44px;flex:0 0 auto;border-radius:12px;background:#fff;border:1px solid var(--line);
+    display:grid;place-items:center;color:var(--navy)}
+  .trust-item .ic svg{width:24px;height:24px}
+  .trust-item b{display:block;font-family:Archivo;font-size:15px;color:var(--navy)}
+  .trust-item small{color:var(--muted)}
+
+  /* ===== Sections ===== */
+  section.block{padding:64px 0}
+  .head{display:flex;align-items:end;justify-content:space-between;margin-bottom:30px;gap:16px;flex-wrap:wrap}
+  .head h2{font-size:clamp(26px,3.4vw,38px);font-weight:800;color:var(--navy)}
+  .head .sub{color:var(--muted);margin-top:6px}
+  .head a{color:var(--orange);font-weight:700;font-family:Archivo}
+
+  /* Categorias */
+  .cats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .cat{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:4/3;box-shadow:var(--shadow)}
+  .cat img{width:100%;height:100%;object-fit:cover;transition:.4s}
+  .cat:hover img{transform:scale(1.07)}
+  .cat::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(14,35,65,.82),rgba(14,35,65,.05))}
+  .cat span{position:absolute;z-index:2;left:22px;bottom:20px;color:#fff;font-family:Archivo;font-weight:800;font-size:24px}
+  .cat em{position:absolute;z-index:2;left:22px;bottom:2px;color:#cdd;font-style:normal;font-size:13px}
+
+  /* Produtos */
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
+    display:flex;flex-direction:column;transition:.2s}
+  .card:hover{box-shadow:var(--shadow-lg);transform:translateY(-4px)}
+  .card .thumb{position:relative;aspect-ratio:1/1;overflow:hidden;background:var(--bg)}
+  .card .thumb img{width:100%;height:100%;object-fit:cover;transition:.4s}
+  .card:hover .thumb img{transform:scale(1.06)}
+  .badge{position:absolute;top:12px;left:12px;z-index:2;font-size:12px;font-weight:800;font-family:Archivo;
+    color:#fff;padding:5px 10px;border-radius:999px}
+  .badge.sale{background:var(--sale)} .badge.new{background:var(--orange)}
+  .card .body{padding:16px;display:flex;flex-direction:column;gap:6px;flex:1}
+  .card .name{font-weight:600;font-size:15px;color:var(--ink);min-height:42px}
+  .card .price{font-family:Archivo;font-weight:800;font-size:22px;color:var(--navy)}
+  .card .price s{color:var(--muted);font-weight:500;font-size:14px;margin-right:6px}
+  .card .inst{font-size:13px;color:var(--green);font-weight:600}
+  .card .btn{margin-top:10px;justify-content:center;width:100%;padding:11px}
+
+  /* Promo split */
+  .promo{display:grid;grid-template-columns:1.1fr .9fr;gap:0;border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+  .promo .txt{background:var(--navy);color:#fff;padding:52px 46px;display:flex;flex-direction:column;justify-content:center;gap:16px}
+  .promo .txt h2{color:#fff;font-size:34px;font-weight:900}
+  .promo .txt p{color:#cfe0f2;margin:0}
+  .promo img{width:100%;height:100%;object-fit:cover;min-height:280px}
+
+  /* Newsletter */
+  .news{background:var(--bg);text-align:center}
+  .news h2{color:var(--navy);font-size:30px;font-weight:800}
+  .news p{color:var(--muted);margin:8px 0 22px}
+  .news form{display:flex;gap:10px;max-width:480px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+  .news input{flex:1;min-width:220px;padding:14px 16px;border:1px solid var(--line);border-radius:10px;font-size:15px}
+
+  /* Footer */
+  footer{background:var(--navy-900);color:#c6d4e4;padding:56px 0 24px;font-size:14px}
+  .fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:34px}
+  footer h4{font-family:Archivo;color:#fff;font-size:16px;margin:0 0 14px}
+  footer ul{list-style:none;padding:0;margin:0;display:grid;gap:9px}
+  footer a:hover{color:var(--orange)}
+  .fbrand .mark{font-family:Archivo;font-weight:900;font-size:22px;color:#fff;letter-spacing:.02em}
+  .fbrand .mark b{color:var(--orange)}
+  .pay{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+  .pay span{background:#fff;color:var(--navy);font-weight:800;font-size:11px;font-family:Archivo;
+    padding:5px 8px;border-radius:6px}
+  .social{display:flex;gap:12px;margin-top:14px}
+  .social a{width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.08);display:grid;place-items:center;color:#fff}
+  .social a:hover{background:var(--orange)}
+  .social svg{width:18px;height:18px}
+  .fbar{border-top:1px solid rgba(255,255,255,.1);margin-top:40px;padding-top:20px;display:flex;
+    justify-content:space-between;gap:12px;flex-wrap:wrap;color:#8ca2bd;font-size:13px}
+
+  .demo-note{background:var(--orange);color:#231200;text-align:center;font-weight:700;font-size:13px;padding:8px}
+
+  /* Responsivo */
+  @media(max-width:960px){
+    .trust-grid{grid-template-columns:repeat(2,1fr)}
+    .grid{grid-template-columns:repeat(2,1fr)}
+    .cats{grid-template-columns:1fr}
+    .promo{grid-template-columns:1fr}
+    .fgrid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:640px){
+    .menu{display:none}
+    .burger{display:block}
+    .grid{grid-template-columns:repeat(2,1fr);gap:14px}
+    .hero{min-height:460px}
+    .fgrid{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-note">MOCKUP / DEMONSTRAÇÃO — visão de design custom para a Netuno Suprimentos</div>
+
+<div class="marquee" aria-label="Benefícios">
+  <div class="marquee-track">
+    <span>🚚 Enviamos para <b>todo o Brasil</b></span>
+    <span>💳 Em até <b>12x sem juros</b></span>
+    <span>⚡ <b>10% OFF</b> no Pix</span>
+    <span>🔒 Site seguro e compra garantida</span>
+    <!-- duplicado p/ loop contínuo -->
+    <span>🚚 Enviamos para <b>todo o Brasil</b></span>
+    <span>💳 Em até <b>12x sem juros</b></span>
+    <span>⚡ <b>10% OFF</b> no Pix</span>
+    <span>🔒 Site seguro e compra garantida</span>
+  </div>
+</div>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#"><img src="assets/logo.jpg" alt="Netuno Suprimentos"></a>
+    <nav class="menu">
+      <a href="#cats">Categorias</a>
+      <a href="#produtos">Produtos</a>
+      <a href="#ofertas">Ofertas</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <div class="icons">
+      <a href="#" aria-label="Buscar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></a>
+      <a href="#" aria-label="Conta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></a>
+      <a href="#" class="cart" aria-label="Carrinho"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M6 6 5 3H2"/></svg><b>3</b></a>
+      <button class="burger" aria-label="Menu" onclick="document.querySelector('.menu').style.display='flex'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="26" height="26"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <img src="https://images.unsplash.com/photo-1541742425281-c1d3fc8aff96?w=1920&h=900&fit=crop&q=80&fm=jpg" alt="Pesca ao pôr do sol">
+  <div class="wrap hero-inner">
+    <div class="kicker">Náutica · Pesca · Aventura</div>
+    <h1>Tudo para o seu barco, sua pescaria e suas aventuras</h1>
+    <p>Equipamentos e suprimentos selecionados, com entrega para todo o Brasil e parcelamento em até 12x sem juros.</p>
+    <div class="hero-cta">
+      <a href="#produtos" class="btn btn-orange">Ver produtos</a>
+      <a href="#cats" class="btn btn-ghost" style="color:#fff;border-color:#fff">Explorar categorias</a>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<div class="trust">
+  <div class="wrap trust-grid">
+    <div class="trust-item"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h11v8H3z"/><path d="M14 10h4l3 3v2h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg></div><div><b>Frete nacional</b><small>Enviamos para todo o Brasil</small></div></div>
+    <div class="trust-item"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div><div><b>Até 12x sem juros</b><small>No cartão de crédito</small></div></div>
+    <div class="trust-item"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6z"/></svg></div><div><b>10% OFF no Pix</b><small>Desconto à vista</small></div></div>
+    <div class="trust-item"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div><div><b>Compra segura</b><small>Loja oficial e protegida</small></div></div>
+  </div>
+</div>
+
+<!-- CATEGORIAS -->
+<section class="block" id="cats">
+  <div class="wrap">
+    <div class="head"><div><h2>Navegue por categoria</h2><div class="sub">Do convés à beira do rio — tudo em um só lugar</div></div></div>
+    <div class="cats">
+      <a class="cat" href="#produtos"><img src="https://images.unsplash.com/photo-1623881168214-2c100bd29e37?w=800&h=600&fit=crop&q=80&fm=jpg" alt="Náutica"><span>Náutica</span><em>Âncoras, cordas, segurança</em></a>
+      <a class="cat" href="#produtos"><img src="https://images.unsplash.com/photo-1529230117010-b6c436154f25?w=800&h=600&fit=crop&q=80&fm=jpg" alt="Pesca"><span>Pesca</span><em>Varas, molinetes, iscas</em></a>
+      <a class="cat" href="#produtos"><img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=800&h=600&fit=crop&q=80&fm=jpg" alt="Camping & Esporte"><span>Camping &amp; Esporte</span><em>Barracas, caixas térmicas</em></a>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUTOS -->
+<section class="block" id="produtos" style="padding-top:0">
+  <div class="wrap">
+    <div class="head"><div><h2>Produtos em destaque</h2><div class="sub">Os mais procurados da estação</div></div><a href="#">Ver todos →</a></div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<!-- PROMO -->
+<section class="block" id="ofertas" style="padding-top:0">
+  <div class="wrap">
+    <div class="promo">
+      <div class="txt">
+        <div class="kicker" style="color:var(--orange)">Ofertas da semana</div>
+        <h2>Equipe seu barco pagando menos</h2>
+        <p>Seleção de itens náuticos e de pesca com descontos especiais e frete calculado na hora pelo seu CEP.</p>
+        <div><a href="#produtos" class="btn btn-orange">Aproveitar ofertas</a></div>
+      </div>
+      <img src="https://images.unsplash.com/photo-1658684276903-d01b7974ca90?w=1000&h=800&fit=crop&q=80&fm=jpg" alt="Oferta náutica">
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="block news" id="contato">
+  <div class="wrap">
+    <h2>Receba as novidades e ofertas</h2>
+    <p>Cadastre seu e-mail e fique por dentro dos lançamentos da Netuno Suprimentos.</p>
+    <form onsubmit="return false">
+      <input type="email" placeholder="seu@email.com" aria-label="E-mail">
+      <button class="btn btn-navy">Quero receber</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div class="fbrand">
+        <div class="mark">NETUNO <b>SUPRIMENTOS</b></div>
+        <p style="margin:12px 0 0;max-width:280px">Suprimentos de náutica, pesca e camping com entrega para todo o Brasil.</p>
+        <div class="pay"><span>PIX</span><span>VISA</span><span>MASTER</span><span>ELO</span><span>BOLETO</span></div>
+        <div class="social">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+          <a href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.5A10 10 0 1 0 12 2m0 2a8 8 0 1 1-4.1 14.9l-.3-.2-2.9.9.9-2.8-.2-.3A8 8 0 0 1 12 4m4.3 10.2c-.2-.1-1.3-.7-1.5-.7-.2-.1-.3-.1-.5.1l-.6.8c-.1.1-.2.2-.4.1a6.6 6.6 0 0 1-3.2-2.8c-.1-.2 0-.3.1-.4l.3-.4c.1-.1.1-.2.2-.4 0-.1 0-.3 0-.4l-.7-1.6c-.2-.4-.3-.4-.5-.4h-.4c-.1 0-.4.1-.6.3-.2.2-.8.8-.8 1.9s.8 2.2.9 2.3c.1.2 1.6 2.6 4 3.5 1.5.6 1.8.5 2.1.5.4 0 1.3-.5 1.4-1 .2-.5.2-1 .1-1z"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-2 0-3 1.3-3 3v2H8v3h3v7h3v-7h3l1-3h-4V9c0-.6.4-1 1-1z"/></svg></a>
+        </div>
+      </div>
+      <div><h4>Institucional</h4><ul><li><a href="#">Sobre a loja</a></li><li><a href="#">Política de privacidade</a></li><li><a href="#">Trocas e devoluções</a></li><li><a href="#">Termos de uso</a></li></ul></div>
+      <div><h4>Categorias</h4><ul><li><a href="#produtos">Náutica</a></li><li><a href="#produtos">Pesca</a></li><li><a href="#produtos">Camping &amp; Esporte</a></li><li><a href="#produtos">Ofertas</a></li></ul></div>
+      <div><h4>Atendimento</h4><ul><li><a href="#">WhatsApp</a></li><li><a href="#">Central de ajuda</a></li><li><a href="#">Rastrear pedido</a></li><li><a href="#">Frete e prazos</a></li></ul></div>
+    </div>
+    <div class="fbar">
+      <span>© 2026 Netuno Suprimentos — CNPJ 00.000.000/0001-00 (placeholder)</span>
+      <span>Mockup de demonstração · design conceito</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Catálogo de exemplo (mesmas imagens/preços do mockup Nuvemshop)
+  const P = [
+    ["Vara de Pesca Telescópica 2,4m","159,90","1529230117010-b6c436154f25","new"],
+    ["Molinete de Pesca 5000","219,90","1551131618-3f0a5cf594b4",""],
+    ["Kit de Iscas Artificiais (12 pçs)","59,90","1761303506065-872086753a0c",""],
+    ["Colete Salva-Vidas Náutico","189,90","1622789094987-d75a22f934c4","new"],
+    ["Âncora de Alumínio 4kg","349,90","1623881168214-2c100bd29e37",""],
+    ["Corda Náutica Trançada 10m","79,90","1538488076754-0985fd6f3d36",""],
+    ["Barraca de Camping 4 Pessoas","459,90","1504280390367-361c6d9f38f4","sale"],
+    ["Caixa Térmica 34L","279,90","1576176539998-0237d1ac6a85",""],
+    ["Lanterna de Cabeça LED","49,90","1631635589499-afd87d52bf64",""],
+    ["Caiaque Inflável 2 Lugares","1.299,90","1722203229062-ee4e8110c80c","sale"],
+    ["Linha Multifilamento 300m","89,90","1759259639638-0202c16b9458",""],
+    ["Boia Circular de Resgate","229,90","1658684276903-d01b7974ca90",""],
+  ];
+  const inst = p => { const n=parseFloat(p.replace('.','').replace(',','.')); return '12x de R$ '+(n/12).toFixed(2).replace('.',','); };
+  document.getElementById('grid').innerHTML = P.map(([name,price,img,tag])=>`
+    <div class="card">
+      <div class="thumb">
+        ${tag==='sale'?'<span class="badge sale">OFERTA</span>':tag==='new'?'<span class="badge new">NOVO</span>':''}
+        <img loading="lazy" src="https://images.unsplash.com/photo-${img}?w=600&h=600&fit=crop&q=80&fm=jpg" alt="${name}">
+      </div>
+      <div class="body">
+        <div class="name">${name}</div>
+        <div class="price">R$ ${price}</div>
+        <div class="inst">${inst(price)} sem juros</div>
+        <button class="btn btn-navy">Comprar</button>
+      </div>
+    </div>`).join('');
+</script>
+</body>
+</html>
